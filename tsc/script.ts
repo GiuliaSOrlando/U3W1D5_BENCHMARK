@@ -108,6 +108,3 @@ class Smartphone implements SmartphoneInterface {
 const Honor = new Smartphone(50, 5, 12.4, [])
 const Samsung = new Smartphone(18, 15, 3, [])
 const iPhone = new Smartphone(34, 2, 23, [])
-
-console.log(Honor)
-console.log(Honor.creditoResiduo())
