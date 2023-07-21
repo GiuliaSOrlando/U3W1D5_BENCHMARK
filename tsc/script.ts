@@ -116,10 +116,12 @@ let divContainer = document.getElementById("container")
 
 honorModel.innerHTML = `
   <h2>Honor</h2>
+  <h4>Situazione corrente</h4>
   <p>Numero di chiamate: ${Honor.numeroChiamate}</p>
   <p>Credito residuo: ${Honor.creditoResiduo()}</p>
   <p>Costo minuto: ${Honor.costoMinuto}</p>
   <p>Numero di chiamate effettuate: ${Honor.numeroChiamate}</p>
+  <h4>Bottoni per accedere ai metodi</h4>
   <label for="inputRicarica">Valore ricarica</label>
   <input type="number" id="inputRicarica"></input>
   <button id="ricarica">Ricarica</button>
