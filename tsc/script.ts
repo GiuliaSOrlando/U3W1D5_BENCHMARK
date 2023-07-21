@@ -112,8 +112,6 @@ const Samsung = new Smartphone(18, 15, 3, [])
 const iPhone = new Smartphone(34, 2, 23, [])
 
 let honorModel = document.createElement("div")
-let samsungModel = document.createElement("div")
-let iPhoneModel = document.createElement("div")
 let divContainer = document.getElementById("container")
 
 honorModel.innerHTML = `
