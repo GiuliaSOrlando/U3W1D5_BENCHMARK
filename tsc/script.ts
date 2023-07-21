@@ -118,49 +118,30 @@ let divContainer = document.getElementById("container")
 
 honorModel.innerHTML = `
   <h2>Honor</h2>
-  <h4>Status attuale</h4>
   <p>Numero di chiamate: ${Honor.numeroChiamate}</p>
   <p>Credito residuo: ${Honor.creditoResiduo()}</p>
   <p>Costo minuto: ${Honor.costoMinuto}</p>
   <p>Numero di chiamate effettuate: ${Honor.numeroChiamate}</p>
-  <h4>Bottoni</h4>
-  <label for="inputRicaricaHonor">Valore ricarica</label>
-  <input type="number" id="inputRicaricaHonor"></input>
-  <button id="ricaricaHonor">Ricarica</button>
-  <label for="inputMinutiChiamataHonor">Minuti di chiamata</label>
-  <input type="number" id="inputMinutiChiamataHonor"></input>
-  <button id="chiamataHonor">Durata chiamata</button>
-  <button id="mostraRegistroHonor">Mostra Registro</button>
-`
-samsungModel.innerHTML = `
-  <h2>Samsung</h2>
-  <h4>Status attuale</h4>
-  <p>Numero di chiamate: ${Samsung.numeroChiamate}</p>
-  <p>Credito residuo: ${Samsung.creditoResiduo()}</p>
-  <p>Costo minuto: ${Samsung.costoMinuto}</p>
-  <p>Numero di chiamate effettuate: ${Samsung.numeroChiamate}</p>
-  
-  <h4>Bottoni</h4> 
-  <label for="inputRicaricaSamsung">Valore ricarica</label>
-  <input type="number" id="inputRicaricaSamsung"></input>
-  <button id="ricaricaSamsung">Ricarica</button>
-  <label for="inputMinutiChiamataSamsung">Minuti di chiamata</label>
-  <input type="number" id="inputMinutiChiamataSamsung"></input>
-  <button id="chiamataSamsung">Durata chiamata</button>
-  <button id="mostraRegistroSamsung">Mostra Registro</button>
+  <label for="inputRicarica">Valore ricarica</label>
+  <input type="number" id="inputRicarica"></input>
+  <button id="ricarica">Ricarica</button>
+  <label for="inputMinutiChiamata">Minuti di chiamata</label>
+  <input type="number" id="inputMinutiChiamata"></input>
+  <button id="chiamata">Durata chiamata</button>
+  <button id="mostraRegistro">Mostra Registro</button>
 `
 
 divContainer?.appendChild(honorModel)
 divContainer?.appendChild(samsungModel)
 
-let ricaricaButtonHonor = document.getElementById("ricaricaHonor")
-let chiamataButtonHonor = document.getElementById("chiamataHonor")
-let mostraRegistroButtonHonor = document.getElementById("mostraRegistroHonor")
+let ricaricaButton = document.getElementById("ricarica")
+let chiamataButton = document.getElementById("chiamata")
+let mostraRegistroButton = document.getElementById("mostraRegistro")
 
 // Questo bottone permette di ricaricare il credito residuo
-ricaricaButtonHonor?.addEventListener("click", () => {
+ricaricaButton?.addEventListener("click", () => {
   let inputRicarica = document.getElementById(
-    "inputRicaricaHonor"
+    "inputRicarica"
   ) as HTMLInputElement
   let inputRicaricaValue = parseInt(inputRicarica.value)
   Honor.ricarica(inputRicaricaValue)
@@ -169,9 +150,9 @@ ricaricaButtonHonor?.addEventListener("click", () => {
 
 // Questo bottone genera un numero di chiamate pari all'argomento passato quando la classe è stata istanziata
 // I minuti di chiamata sono invece mostrati come alert
-chiamataButtonHonor?.addEventListener("click", () => {
+chiamataButton?.addEventListener("click", () => {
   let inputMinutiChiamata = document.getElementById(
-    "inputMinutiChiamataHonor"
+    "inputMinutiChiamata"
   ) as HTMLInputElement
   let inputMinutiChiamataValue = parseInt(inputMinutiChiamata.value)
   Honor.chiamata(inputMinutiChiamataValue)
@@ -180,40 +161,7 @@ chiamataButtonHonor?.addEventListener("click", () => {
 })
 
 // Questo bottonne mostra il contenuto dell'array registroChiamate
-mostraRegistroButtonHonor?.addEventListener("click", () => {
+mostraRegistroButton?.addEventListener("click", () => {
   Honor.mostraRegistroChiamate()
   console.log(Honor.registroChiamate)
-})
-
-let ricaricaButtonSamsung = document.getElementById("ricaricaSamsung")
-let chiamataButtonSamsung = document.getElementById("chiamataSamsung")
-let mostraRegistroButtonSamsung = document.getElementById(
-  "mostraRegistroSamsung"
-)
-
-// Questo bottone permette di ricaricare il credito residuo
-ricaricaButtonSamsung?.addEventListener("click", () => {
-  let inputRicarica = document.getElementById(
-    "inputRicaricaSamsung"
-  ) as HTMLInputElement
-  let inputRicaricaValue = parseInt(inputRicarica.value)
-  Samsung.ricarica(inputRicaricaValue)
-  alert(`${Samsung.carica} €`)
-})
-
-// Questo bottone genera un numero di chiamate pari all'argomento passato quando la classe è stata istanziata
-chiamataButtonSamsung?.addEventListener("click", () => {
-  let inputMinutiChiamata = document.getElementById(
-    "inputMinutiChiamataSamsung"
-  ) as HTMLInputElement
-  let inputMinutiChiamataValue = parseInt(inputMinutiChiamata.value)
-  Samsung.chiamata(inputMinutiChiamataValue)
-  console.log(Samsung.registroChiamate)
-  alert(`${inputMinutiChiamataValue} minuti di chiamata`)
-})
-
-// Questo bottonne mostra il contenuto dell'array registroChiamate
-mostraRegistroButtonSamsung?.addEventListener("click", () => {
-  Samsung.mostraRegistroChiamate()
-  console.log(Samsung.registroChiamate)
 })
