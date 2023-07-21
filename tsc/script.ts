@@ -119,7 +119,7 @@ honorModel.innerHTML = `
   <h4>Situazione corrente</h4>
   <p>Numero di chiamate: ${Honor.numeroChiamate}</p>
   <p>Credito residuo: ${Honor.creditoResiduo()}</p>
-  <p>Costo minuto: ${Honor.costoMinuto}</p>
+  <p>Costo minuto: ${Honor.costoMinuto} €</p>
   <p>Numero di chiamate effettuate: ${Honor.numeroChiamate}</p>
   <h4>Bottoni per accedere ai metodi</h4>
   <label for="inputRicarica">Valore ricarica</label>
