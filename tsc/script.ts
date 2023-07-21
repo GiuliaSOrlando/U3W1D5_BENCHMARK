@@ -14,6 +14,7 @@ interface SmartphoneInterface {
   carica: number //Quantitativo di euro disponibile per chiamare
   numeroChiamate: number // Numero di chiamate effettuate su questo smartphone
   costoMinuto: number // Costo (fisso) al minuto della chiamata
+  costoChiamata: number // Variabile per memorizzare il costo della chiamata
   registroChiamate: InformazioniChiamata[] // Array contenente informazioni sulle chiamate effettuate su questo smartphone
   ricarica(euro: number): void // Metodo che permette di aggiornare la quantità di euro disponibile per chiamare
   creditoResiduo(): string // Metodo che restituisce un messaggio che indica il credito residuo (in formato stringa, perché comprensivo di valuta)
@@ -27,6 +28,7 @@ interface SmartphoneInterface {
 // Creo una classe che implementa l'interfaccia SmartphoneInterface
 class Smartphone implements SmartphoneInterface {
   costoMinuto: number = 0.2
+  costoChiamata!: number
   carica: number = 0
   counter: number = 0
   fromDate!: Date
@@ -71,12 +73,11 @@ class Smartphone implements SmartphoneInterface {
   // Questo metodo mostra il credito residuo, mostrando il valore in euro
   creditoResiduo(): string {
     if (this.carica < 0) {
-      return "Non hai residuo"
+      return "Non hai credito residuo"
     } else {
-      return "Hai residuo " + this.carica.toFixed(2) + "€"
+      return "Hai un credito residuo di " + this.carica.toFixed(2) + "€"
     }
   }
-
   // Questo metodo ritorna il numero di chiamate effettuate su questo smartphone
   getNumeroChiamate(): number {
     return this.numeroChiamate
@@ -105,6 +106,109 @@ class Smartphone implements SmartphoneInterface {
   }
 }
 
+// Utenti istanziati dalle classi: i nomi assegnati si riferiscono al modello dello smartphone
 const Honor = new Smartphone(50, 5, 12.4, [])
 const Samsung = new Smartphone(18, 15, 3, [])
 const iPhone = new Smartphone(34, 2, 23, [])
+
+let honorModel = document.createElement("div")
+let samsungModel = document.createElement("div")
+let iPhoneModel = document.createElement("div")
+let divContainer = document.getElementById("container")
+
+honorModel.innerHTML = `
+  <h2>Honor</h2>
+  <p>Numero di chiamate: ${Honor.numeroChiamate}</p>
+  <p>Credito residuo: ${Honor.creditoResiduo()}</p>
+  <p>Costo minuto: ${Honor.costoMinuto}</p>
+  <p>Numero di chiamate effettuate: ${Honor.numeroChiamate}</p>
+  <label for="inputRicaricaHonor">Valore ricarica</label>
+  <input type="number" id="inputRicaricaHonor"></input>
+  <button id="ricaricaHonor">Ricarica</button>
+  <label for="inputMinutiChiamataHonor">Minuti di chiamata</label>
+  <input type="number" id="inputMinutiChiamataHonor"></input>
+  <button id="chiamataHonor">Durata chiamata</button>
+  <button id="mostraRegistroHonor">Mostra Registro</button>
+`
+samsungModel.innerHTML = `
+  <h2>Samsung</h2>
+  <p>Numero di chiamate: ${Samsung.numeroChiamate}</p>
+  <p>Credito residuo: ${Samsung.creditoResiduo()}</p>
+  <p>Costo minuto: ${Samsung.costoMinuto}</p>
+  <p>Numero di chiamate effettuate: ${Samsung.numeroChiamate}</p>
+  <label for="inputRicaricaSamsung">Valore ricarica</label>
+  <input type="number" id="inputRicaricaSamsung"></input>
+  <button id="ricaricaSamsung">Ricarica</button>
+  <label for="inputMinutiChiamataSamsung">Minuti di chiamata</label>
+  <input type="number" id="inputMinutiChiamataSamsung"></input>
+  <button id="chiamataSamsung">Durata chiamata</button>
+  <button id="mostraRegistroSamsung">Mostra Registro</button>
+`
+
+divContainer?.appendChild(honorModel)
+divContainer?.appendChild(samsungModel)
+
+let ricaricaButtonHonor = document.getElementById("ricaricaHonor")
+let chiamataButtonHonor = document.getElementById("chiamataHonor")
+let mostraRegistroButtonHonor = document.getElementById("mostraRegistroHonor")
+
+// Questo bottone permette di ricaricare il credito residuo
+ricaricaButtonHonor?.addEventListener("click", () => {
+  let inputRicarica = document.getElementById(
+    "inputRicaricaHonor"
+  ) as HTMLInputElement
+  let inputRicaricaValue = parseInt(inputRicarica.value)
+  Honor.ricarica(inputRicaricaValue)
+  alert(`${Honor.carica} €`)
+})
+
+// Questo bottone genera un numero di chiamate pari all'argomento passato quando la classe è stata istanziata
+// I minuti di chiamata sono invece mostrati come alert
+chiamataButtonHonor?.addEventListener("click", () => {
+  let inputMinutiChiamata = document.getElementById(
+    "inputMinutiChiamataHonor"
+  ) as HTMLInputElement
+  let inputMinutiChiamataValue = parseInt(inputMinutiChiamata.value)
+  Honor.chiamata(inputMinutiChiamataValue)
+  console.log(Honor.registroChiamate)
+  alert(`${inputMinutiChiamataValue} minuti di chiamata`)
+})
+
+// Questo bottonne mostra il contenuto dell'array registroChiamate
+mostraRegistroButtonHonor?.addEventListener("click", () => {
+  Honor.mostraRegistroChiamate()
+  console.log(Honor.registroChiamate)
+})
+
+let ricaricaButtonSamsung = document.getElementById("ricaricaSamsung")
+let chiamataButtonSamsung = document.getElementById("chiamataSamsung")
+let mostraRegistroButtonSamsung = document.getElementById(
+  "mostraRegistroSamsung"
+)
+
+// Questo bottone permette di ricaricare il credito residuo
+ricaricaButtonSamsung?.addEventListener("click", () => {
+  let inputRicarica = document.getElementById(
+    "inputRicaricaSamsung"
+  ) as HTMLInputElement
+  let inputRicaricaValue = parseInt(inputRicarica.value)
+  Samsung.ricarica(inputRicaricaValue)
+  alert(`${Samsung.carica} €`)
+})
+
+// Questo bottone genera un numero di chiamate pari all'argomento passato quando la classe è stata istanziata
+chiamataButtonSamsung?.addEventListener("click", () => {
+  let inputMinutiChiamata = document.getElementById(
+    "inputMinutiChiamataSamsung"
+  ) as HTMLInputElement
+  let inputMinutiChiamataValue = parseInt(inputMinutiChiamata.value)
+  Samsung.chiamata(inputMinutiChiamataValue)
+  console.log(Samsung.registroChiamate)
+  alert(`${inputMinutiChiamataValue} minuti di chiamata`)
+})
+
+// Questo bottonne mostra il contenuto dell'array registroChiamate
+mostraRegistroButtonSamsung?.addEventListener("click", () => {
+  Samsung.mostraRegistroChiamate()
+  console.log(Samsung.registroChiamate)
+})
