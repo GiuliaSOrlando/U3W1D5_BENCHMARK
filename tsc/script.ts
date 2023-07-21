@@ -41,7 +41,6 @@ class Smartphone implements SmartphoneInterface {
     this.ricarica(this.euro)
     this.creditoResiduo()
     this.chiamata(this.min)
-    this.azzeraChiamate()
     this.mostraRegistroChiamate()
     this.filtraChiamatePerDataOra(this.fromDate, this.toDate)
   }
@@ -74,7 +73,7 @@ class Smartphone implements SmartphoneInterface {
     if (this.carica < 0) {
       return "Non hai residuo"
     } else {
-      return "Hai residuo " + this.carica + "€"
+      return "Hai residuo " + this.carica.toFixed(2) + "€"
     }
   }
 
@@ -109,3 +108,6 @@ class Smartphone implements SmartphoneInterface {
 const Honor = new Smartphone(50, 5, 12.4, [])
 const Samsung = new Smartphone(18, 15, 3, [])
 const iPhone = new Smartphone(34, 2, 23, [])
+
+console.log(Honor)
+console.log(Honor.creditoResiduo())
