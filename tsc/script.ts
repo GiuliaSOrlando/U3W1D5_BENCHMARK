@@ -130,7 +130,6 @@ honorModel.innerHTML = `
 `
 
 divContainer?.appendChild(honorModel)
-divContainer?.appendChild(samsungModel)
 
 let ricaricaButton = document.getElementById("ricarica")
 let chiamataButton = document.getElementById("chiamata")
