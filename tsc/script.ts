@@ -127,7 +127,7 @@ honorModel.innerHTML = `
   <button id="ricarica">Ricarica</button>
   <label for="inputMinutiChiamata">Minuti di chiamata</label>
   <input type="number" id="inputMinutiChiamata"></input>
-  <button id="chiamata">Durata chiamata</button>
+  <button id="chiamata">Genera nuove chiamate</button>
   <button id="mostraRegistro">Mostra Registro</button>
 `
 
