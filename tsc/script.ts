@@ -118,10 +118,12 @@ let divContainer = document.getElementById("container")
 
 honorModel.innerHTML = `
   <h2>Honor</h2>
+  <h4>Status attuale</h4>
   <p>Numero di chiamate: ${Honor.numeroChiamate}</p>
   <p>Credito residuo: ${Honor.creditoResiduo()}</p>
   <p>Costo minuto: ${Honor.costoMinuto}</p>
   <p>Numero di chiamate effettuate: ${Honor.numeroChiamate}</p>
+  <h4>Bottoni</h4>
   <label for="inputRicaricaHonor">Valore ricarica</label>
   <input type="number" id="inputRicaricaHonor"></input>
   <button id="ricaricaHonor">Ricarica</button>
@@ -132,10 +134,13 @@ honorModel.innerHTML = `
 `
 samsungModel.innerHTML = `
   <h2>Samsung</h2>
+  <h4>Status attuale</h4>
   <p>Numero di chiamate: ${Samsung.numeroChiamate}</p>
   <p>Credito residuo: ${Samsung.creditoResiduo()}</p>
   <p>Costo minuto: ${Samsung.costoMinuto}</p>
   <p>Numero di chiamate effettuate: ${Samsung.numeroChiamate}</p>
+  
+  <h4>Bottoni</h4> 
   <label for="inputRicaricaSamsung">Valore ricarica</label>
   <input type="number" id="inputRicaricaSamsung"></input>
   <button id="ricaricaSamsung">Ricarica</button>
